@@ -1,0 +1,884 @@
+@font-face {
+  font-family: "Amatic SC";
+  src: url("fonts/AmaticSC-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amatic SC";
+  src: url("fonts/AmaticSC-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dela Gothic One";
+  src: url("fonts/DelaGothicOne-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jura";
+  src: url("fonts/Jura-VariableFont_wght.woff2") format("woff2");
+  font-weight: 300 700; /* Так как это вариативный шрифт (Variable Font), поддерживается диапазон весов */
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jura";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+body.it-p {
+  background: radial-gradient(circle, rgba(255, 99, 99, 1) 0%, rgba(207, 91, 91, 1) 24%, rgba(181, 81, 81, 1) 55%, rgba(153, 69, 69, 1) 74%, rgba(94, 42, 42, 1) 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1720px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0px 70px;
+}
+
+h1,
+button {
+  font-family: "Dela Gothic One";
+  font-weight: 400;
+}
+
+button,
+input {
+  all: unset;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 
+item logo - Amatic SC
+h1,price,size,btn - Dela Gothic One
+nav,text - Jura
+*/
+
+.header-wrap > nav {
+  z-index: 10;
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-wrap > nav > ul {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 26px;
+  background-color: rgb(150 71 17 / 50%);
+}
+
+.header-wrap > nav > ul > li {
+  display: flex;
+  padding: 8px 26px;
+  border-radius: 18px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.header-wrap > nav > ul > li.cl {
+  background-color: wheat;
+}
+
+.header-wrap > nav > ul > li:hover {
+  background-color: white;
+}
+
+.header-wrap > nav > ul > li.cl > a,
+.header-wrap > nav > ul > li:hover > a {
+  color: black;
+}
+
+.header-wrap > nav > ul > li > a {
+  text-wrap: nowrap;
+  font-size: 22px;
+  color: white;
+}
+
+.burger-wrap {
+  display: none;
+}
+
+.work-area {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 33px;
+}
+
+.top-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand,
+.bl-cart {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  gap: 6px;
+}
+
+.brand > .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  mix-blend-mode: screen;
+  border-radius: 8px;
+}
+
+.brand > .logo > span {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-family: "Amatic SC";
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.brand > .prod-name {
+  font-family: "Amatic SC";
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 700;
+  color: white;
+}
+
+.bl-cart {
+  display: flex;
+  gap: 6px;
+}
+
+.bl-cart > div > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  aspect-ratio: 1 / 1;
+  background-color: rgb(150 71 17 / 50%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.bl-cart > div > button:hover > svg {
+  color: white;
+}
+
+.bl-cart svg {
+  width: 30px;
+  color: rgb(255 255 255 / 50%);
+  transition: color 0.3s ease;
+}
+
+/* slider controller start */
+
+.mid-area {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mid-area > .roll {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 160px;
+  overflow-x: auto;
+  /* overflow-x: hidden; */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.mid-area > .roll::-webkit-scrollbar {
+  display: none;
+}
+
+section {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: center;
+}
+
+/* slider controller end */
+
+/* section actual item start */
+
+.actual-item {
+  display: flex;
+}
+
+.item-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+}
+
+.item-btn-slider {
+  display: flex;
+  gap: 18px;
+}
+
+.item-btn-slider > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background-color: rgb(150 71 17 / 50%);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.item-btn-slider > button:hover {
+  background-color: white;
+}
+
+.item-btn-slider > button > span {
+  display: flex;
+}
+
+.item-btn-slider > button > span > svg {
+  color: rgb(255 255 255 / 100%);
+  transition: color 0.3s ease;
+}
+
+.item-btn-slider > button:hover > span > svg {
+  color: rgb(0 0 0 / 100%);
+  transition: color 0.3s ease;
+}
+
+.item-btn-slider > button.iend > span > svg {
+  color: rgb(255 255 255 / 50%);
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 485px;
+}
+
+.item-text > h1 {
+  font-size: 52px;
+  line-height: 45px;
+  color: white;
+}
+
+.text-wrap > p {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 1.3px;
+  color: white;
+}
+
+.add-too-cart > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 66px;
+  line-height: 66px;
+  padding: 0 32px;
+  border-radius: 36px;
+  font-size: 28px;
+  font-weight: 600;
+  background-color: rgba(255 255 255 / 60%);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-too-cart > button:hover {
+  background-color: rgba(255 255 255 / 100%);
+}
+
+.add-too-cart > button > .btn-arr {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.add-too-cart > button:hover > .btn-arr {
+  transform: translateX(10px) rotate(-45deg);
+}
+
+.add-too-cart > button > span {
+  text-wrap: nowrap;
+}
+
+.product-item-wrap {
+  pointer-events: none;
+  position: relative;
+  align-self: center;
+  width: 100%;
+  max-width: 760px;
+  aspect-ratio: 890 / 375;
+}
+
+.product-item-wrap > .sel-item > .wrap-img {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50% + 0px), calc(-50% + -20px)) scale(1) rotate(25deg);
+}
+
+.product-item-wrap > .sel-item > .wrap-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.product-item-inform {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  gap: 36px;
+}
+
+.product-item-inform > .item-price {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 45px;
+}
+
+.product-item-inform > .item-price > span {
+  font-family: "Dela Gothic One";
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.product-item-inform > .item-price > span.old-pr {
+  text-decoration: line-through;
+}
+
+.product-item-inform > .item-sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-item-inform > .item-sizes > span {
+  text-align: end;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 1.3px;
+  color: white;
+}
+
+.product-item-inform > .item-sizes > .all-sizes-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 8px;
+}
+
+.product-item-inform > .item-sizes > .all-sizes-wrap > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: rgb(150 71 17 / 50%);
+  mix-blend-mode: screen;
+  font-family: "Dela Gothic One";
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-item-inform > .item-sizes > .all-sizes-wrap > button:hover,
+.product-item-inform > .item-sizes > .all-sizes-wrap > button.sel-sz:hover {
+  background-color: rgb(255 255 255 / 100%);
+}
+
+.product-item-inform > .item-sizes > .all-sizes-wrap > button.sel-sz {
+  background-color: wheat;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.socials-links {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+}
+
+.socials-links > div > a > svg {
+  display: block;
+  color: rgba(255 255 255 / 60%);
+  transition: color 0.3s ease;
+}
+
+.socials-links > div > a:hover > svg {
+  color: rgba(255 255 255 / 100%);
+}
+
+.item-sl-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-sl-text > span {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 3.3px;
+  color: white;
+}
+
+.item-prew-wrap {
+  position: relative;
+  display: block;
+  width: 250px;
+  aspect-ratio: 890 / 401;
+}
+
+.item-prew-wrap > .item-prev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 890px;
+  aspect-ratio: 890 / 401;
+  transform-origin: top left;
+  transform: scale(calc(250 / 890));
+  will-change: transform;
+}
+
+.item-prew-wrap > .item-prev > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* section actual item end */
+
+/* section all item start */
+
+.all-items {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 30px;
+}
+
+.all-items > .discount {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: wheat;
+  cursor: pointer;
+}
+
+.all-items > .discount > span {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 28px;
+  font-weight: 600;
+  color: black;
+}
+
+.all-items > .discount > .disc-offer {
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  height: fit-content;
+  gap: 16px;
+  left: 0px;
+  transform: translateX(70px);
+  border: 1px solid wheat;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  background-color: rgb(150 71 17 / 40%);
+  padding: 32px;
+  cursor: default;
+}
+
+.all-items > .discount > .disc-offer > .offer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26px;
+  line-height: 32px;
+  color: whitesmoke;
+}
+
+.all-items > .discount > .disc-offer > .offer-text > span > span.offer-text-rab {
+  font-size: 32px;
+  font-weight: 700;
+  color: red;
+}
+
+.all-items > .discount > .disc-offer > .offer-inpts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.all-items > .discount > .disc-offer > .offer-inpts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 75%;
+}
+
+.all-items > .discount > .disc-offer > .offer-inpts > div > label {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 1.3px;
+  color: white;
+}
+
+.all-items > .discount > .disc-offer > .offer-inpts > div > input {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  border: 1px solid whitesmoke;
+  border-radius: 12px;
+  color: whitesmoke;
+  padding: 0 18px;
+}
+
+.all-items > .discount > .disc-offer > .offer-btn-wr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-items > .discount > .disc-offer > .offer-btn-wr > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 24px;
+  border-radius: 36px;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: rgba(255 255 255 / 60%);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.all-items > .discount > .disc-offer > .offer-btn-wr > button:hover {
+  background-color: rgb(255 255 255 / 100%);
+}
+
+.wrap-all-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.wrap-all-items > .item-wr {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  border: 1px solid rgb(150 71 17 / 70%);
+  border-radius: 18px;
+  padding: 26px 0;
+}
+
+.wrap-all-items > .item-wr > .i-img-wr {
+  display: block;
+  width: 355px;
+  height: auto;
+  aspect-ratio: 355 / 160;
+  margin: 0 auto;
+}
+
+.wrap-all-items > .item-wr > .i-img-wr > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.item-cont-wrap > .i-cont-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 16px;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-name {
+  display: flex;
+  gap: 8px;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-name > span {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 1.3px;
+  color: white;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-sizes {
+  display: flex;
+  gap: 8px;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-sizes > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background-color: rgb(150 71 17 / 50%);
+  color: black;
+  mix-blend-mode: screen;
+  font-family: "Dela Gothic One";
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-sizes > button:hover,
+.item-cont-wrap > .i-cont-inner > .i-sizes > button.take-sz:hover {
+  background-color: rgb(255 255 255 / 100%);
+}
+
+.item-cont-wrap > .i-cont-inner > .i-sizes > button.take-sz {
+  background-color: wheat;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-price {
+  display: flex;
+  gap: 8px;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-price > span {
+  font-family: "Dela Gothic One";
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-price > span.i-old-pr {
+  text-decoration: line-through;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-btns > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  aspect-ratio: 1 / 1;
+  background-color: rgb(150 71 17 / 50%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-btns > button > svg {
+  width: 30px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  color: rgb(255 255 255 / 50%);
+  transition: color 0.3s ease;
+}
+
+.item-cont-wrap > .i-cont-inner > .i-btns > button:hover > svg {
+  color: white;
+}
+
+/* section all item end */
+
+/* section about start */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 18px;
+}
+
+.about > .bl-l {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about > .bl-l > .r-one,
+.about > .bl-l > .r-two {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about > .bl-l > .r-one > h3,
+.about > .bl-l > .r-two > h3 {
+  font-family: "Dela Gothic One";
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 400;
+  color: white;
+}
+
+.about > .bl-l > .r-one > p,
+.about > .bl-l > .r-two > ul > li {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 1.3px;
+  color: white;
+}
+
+.about > .bl-l > .r-two > ul > li > span:nth-child(1) {
+  font-weight: 700;
+}
+
+.about > .bl-r {
+  display: flex;
+  justify-content: center;
+}
+
+.about > .bl-r > div {
+  width: 890px;
+  height: auto;
+  aspect-ratio: 890 / 375;
+  transform: rotate(-25deg);
+}
+
+.about > .bl-r > div > img {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+/* section about end */
+
+/* section contacts start */
+
+.contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 42px;
+  column-gap: 18px;
+  padding-top: 90px;
+}
+
+.contacts > .bl-r {
+  grid-column: 1 / -1;
+}
+
+.contacts > .bl-l,
+.contacts > .bl-m,
+.contacts > .bl-r {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contacts > .bl-l > h3,
+.contacts > .bl-m > h3,
+.contacts > .bl-r > h3 {
+  text-align: center;
+  font-family: "Dela Gothic One";
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 400;
+  color: white;
+}
+
+.contacts > .bl-l > div > ul,
+.contacts > .bl-m > div > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contacts > .bl-l > div > ul > li,
+.contacts > .bl-m > div > ul > li,
+.contacts > .bl-r > p {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 1.3px;
+  color: white;
+}
+
+/* section contacts end */
